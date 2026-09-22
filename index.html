@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="de" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITS Launcher – Der moderne Minecraft Modloader</title>
+  <meta name="description" content="ITS Launcher – Ein moderner, schneller Minecraft Modloader für Windows, Linux AMD64 und Linux ARM64. Mods laden, verwalten und spielen.">
+  <meta name="theme-color" content="#070a12">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ITS Launcher">
+  <meta property="og:title" content="ITS Launcher – Der moderne Minecraft Modloader">
+  <meta property="og:description" content="Mods laden, verwalten und Minecraft starten. Schnell, elegant und zuverlässig.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            darkbg: '#070a12',
+            cardbg: '#0e1322',
+            accentblue: '#3b82f6',
+            accentindigo: '#6366f1',
+            accentgreen: '#10b981'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-glow { animation: pulseGlow 4s ease-in-out infinite; }
+    
+    body {
+      background-color: #070a12;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .bg-grid {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .glass-card {
+      background: linear-gradient(135deg, rgba(25, 33, 56, 0.65) 0%, rgba(12, 17, 30, 0.8) 100%);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-nav {
+      background: rgba(7, 10, 18, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  </style>
+</head>
+<body class="bg-darkbg bg-grid min-h-screen selection:bg-blue-500 selection:text-white">
+
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative w-11 h-11 rounded-xl overflow-hidden shadow-lg shadow-blue-500/20 border border-blue-500/30 group-hover:scale-105 transition-transform duration-300">
+          <img src="logo.png" alt="ITS Launcher Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/3b82f6?text=ITS'">
+        </div>
+        <div>
+          <span class="font-display font-bold text-xl tracking-tight bg-gradient-to-r from-white via-blue-100 to-blue-300 bg-clip-text text-transparent">ITS Launcher</span>
+          <span class="block text-[10px] font-semibold text-blue-400 tracking-widest uppercase">Modloader</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#features" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Features</a>
+        <a href="#downloads" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Downloads</a>
+        <a href="#faq" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">FAQ</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="#downloads" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold text-sm text-slate-900 bg-gradient-to-r from-blue-400 to-indigo-400 hover:from-blue-300 hover:to-indigo-300 shadow-lg shadow-blue-500/25 transition-all duration-300 hover:scale-[1.02]">
+          Jetzt herunterladen
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-20">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wide uppercase animate-pulse">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#10b981]"></span>
+            Version 1.0.0 Veröffentlicht
+          </div>
+          
+          <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08]">
+            Minecraft.<br>
+            <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Deine Mods.</span><br>
+            Perfekt organisiert.
+          </h1>
+          
+          <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Der schlanke, blitzschnelle Minecraft Modloader für Windows und Linux. Verwalte deine Mod-Instanzen, spiele mit Freunden und genieße pures Gameplay ohne unnötigen Ballast.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="https://github.com/Nicominecith/ITSLAUNCHER/releases/download/1.0.0/its-launcher-0.70.0-x64-setup.exe" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-bold text-slate-900 bg-gradient-to-r from-blue-400 to-indigo-400 hover:from-blue-300 hover:to-indigo-300 shadow-xl shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Windows x64 (.exe)
+            </a>
+            <a href="#downloads" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-semibold text-white glass-card hover:bg-slate-800/80 transition-all duration-300 hover:-translate-y-0.5 border border-slate-700/60">
+              <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+              Linux Versionen (.deb)
+            </a>
+          </div>
+          
+          <div class="flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-500 font-medium">
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Open Source</span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Blitzschnell</span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Mod-Support</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative flex items-center justify-center">
+          <div class="absolute w-72 h-72 rounded-full bg-blue-600/20 blur-[100px] animate-glow -top-10 -left-10"></div>
+          <div class="absolute w-72 h-72 rounded-full bg-indigo-600/20 blur-[100px] animate-glow -bottom-10 -right-10"></div>
+          
+          <div class="relative w-full max-w-md glass-card rounded-3xl p-6 sm:p-8 shadow-2xl animate-float">
+            <div class="flex items-center justify-between pb-6 border-b border-white/5">
+              <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-xl object-cover shadow-md border border-white/10" onerror="this.src='https://placehold.co/100x100/1e293b/3b82f6?text=ITS'">
+                <div>
+                  <span class="font-display font-bold text-base block leading-tight">ITS Launcher</span>
+                  <span class="text-xs text-emerald-400 font-semibold flex items-center gap-1 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Bereit zum Start</span>
+                </div>
+              </div>
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">v1.0.0</span>
+            </div>
+            
+            <div class="py-6 space-y-4">
+              <div class="p-4 rounded-2xl bg-slate-900/60 border border-white/5 space-y-2.5">
+                <div class="flex justify-between items-center text-xs text-slate-400 font-medium">
+                  <span>Mod-Instanz: Survival 1.20</span>
+                  <span class="text-blue-400 font-bold">Fabric</span>
+                </div>
+                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                  <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full w-full rounded-full animate-pulse"></div>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 rounded-xl bg-slate-900/40 border border-white/5 text-center">
+                  <span class="block text-xs text-slate-400">Profile</span>
+                  <span class="font-display font-bold text-sm text-white">Aktiv</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900/40 border border-white/5 text-center">
+                  <span class="block text-xs text-slate-400">Modloader</span>
+                  <span class="font-display font-bold text-sm text-emerald-400">Verknüpft</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2 flex flex-wrap gap-2">
+              <span class="text-[11px] px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 border border-white/5">Fabric</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 border border-white/5">Forge</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 border border-white/5">Optifine</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 border border-white/5">Shaders</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="features" class="py-24 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <span class="text-xs font-bold text-blue-400 uppercase tracking-widest px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">Leistungsmerkmale</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-extrabold tracking-tight">Entwickelt für echtes Modding.</h2>
+          <p class="text-slate-400 text-base sm:text-lg">Keine Bloatware, kein unnötiger Schnickschnack. Nur maximale Leistung für deine Welten.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass-card p-8 rounded-3xl relative group hover:border-blue-500/40 transition-all duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-display font-bold text-xl mb-6 group-hover:scale-110 transition-transform">
+              01
+            </div>
+            <h3 class="font-display font-bold text-xl mb-3 text-white">Isolierte Instanzen</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Halte verschiedene Mod-Setups sauber voneinander getrennt. Jede Instanz besitzt ihre eigenen Ordner und Konfigurationen.</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-3xl relative group hover:border-indigo-500/40 transition-all duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 font-display font-bold text-xl mb-6 group-hover:scale-110 transition-transform">
+              02
+            </div>
+            <h3 class="font-display font-bold text-xl mb-3 text-white">Nahtloser Loader-Support</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Installiere und starte Fabric, Forge und andere Loader mit wenigen Klicks direkt aus der eleganten Oberfläche.</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-3xl relative group hover:border-emerald-500/40 transition-all duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-display font-bold text-xl mb-6 group-hover:scale-110 transition-transform">
+              03
+            </div>
+            <h3 class="font-display font-bold text-xl mb-3 text-white">Blitzschneller Start</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Optimierte Performance und schlanke Architektur sorgen für rasante Ladezeiten ohne Systemauslastung.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="downloads" class="py-24 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <span class="text-xs font-bold text-blue-400 uppercase tracking-widest px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">Downloads</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-extrabold tracking-tight">Wähle dein Betriebssystem.</h2>
+          <p class="text-slate-400 text-base sm:text-lg">Lade die aktuelle Version v1.0.0 für Windows oder Linux (AMD64 / ARM64) herunter.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Windows Card -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col justify-between border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">v1.0.0</span>
+                <span class="text-xs text-slate-400">Windows x64</span>
+              </div>
+              <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-xl mb-2 text-white">Windows Installer</h3>
+              <p class="text-slate-400 text-sm mb-6">Perfekt für Windows 10 & 11 (64-bit). Inklusive automatischem Setup.</p>
+            </div>
+            <a href="https://github.com/Nicominecith/ITSLAUNCHER/releases/download/1.0.0/its-launcher-0.70.0-x64-setup.exe" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-slate-900 bg-gradient-to-r from-blue-400 to-indigo-400 hover:from-blue-300 hover:to-indigo-300 transition-all shadow-lg shadow-blue-500/20">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Herunterladen (.exe)
+            </a>
+          </div>
+
+          <!-- Linux AMD64 Card -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col justify-between border border-indigo-500/20 hover:border-indigo-500/50 transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">v1.0.0</span>
+                <span class="text-xs text-slate-400">Linux AMD64</span>
+              </div>
+              <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-xl mb-2 text-white">Linux x86_64 (.deb)</h3>
+              <p class="text-slate-400 text-sm mb-6">Für Ubuntu, Debian, Linux Mint und Derivate mit x86_64 Architektur.</p>
+            </div>
+            <a href="https://github.com/Nicominecith/ITSLAUNCHER/releases/download/1.0.0/its-launcher-0.70.0-amd64.deb" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-white glass-card hover:bg-slate-800 transition-all border border-indigo-500/30">
+              <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Herunterladen (.deb)
+            </a>
+          </div>
+
+          <!-- Linux ARM64 Card -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col justify-between border border-emerald-500/20 hover:border-emerald-500/50 transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">v1.0.0</span>
+                <span class="text-xs text-slate-400">Linux ARM64</span>
+              </div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-xl mb-2 text-white">Linux ARM64 (.deb)</h3>
+              <p class="text-slate-400 text-sm mb-6">Optimiert für ARM64-basierte Linux Systeme und kompatible Geräte.</p>
+            </div>
+            <a href="https://github.com/Nicominecith/ITSLAUNCHER/releases/download/1.0.0/its-launcher-0.70.0-arm64.deb" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-white glass-card hover:bg-slate-800 transition-all border border-emerald-500/30">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Herunterladen (.deb)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-24 border-t border-white/5 relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <span class="text-xs font-bold text-blue-400 uppercase tracking-widest px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">FAQ</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">Häufig gestellte Fragen</h2>
+          <p class="text-slate-400">Alles, was du über den ITS Launcher wissen musst.</p>
+        </div>
+
+        <div class="space-y-4">
+          <details class="glass-card rounded-2xl p-6 group cursor-pointer transition-all border border-white/5 open:border-blue-500/30">
+            <summary class="font-display font-bold text-lg text-white flex justify-between items-center select-none">
+              Was ist der ITS Launcher?
+              <span class="transition-transform group-open:rotate-180 text-blue-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+              Der ITS Launcher ist ein moderner, schneller und intuitiver Minecraft Modloader. Er ermöglicht dir das einfache Verwalten und Starten verschiedener Mod-Setups, Fabric, Forge und benutzerdefinierter Instanzen ohne unnötige Ballast-Oberflächen.
+            </p>
+          </details>
+
+          <details class="glass-card rounded-2xl p-6 group cursor-pointer transition-all border border-white/5 open:border-indigo-500/30">
+            <summary class="font-display font-bold text-lg text-white flex justify-between items-center select-none">
+              Welche Betriebssysteme werden unterstützt?
+              <span class="transition-transform group-open:rotate-180 text-indigo-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+              Der Launcher unterstützt Windows (x64) via Installer sowie Linux-Distributionen in zwei Architekturen: Linux AMD64 (.deb) und Linux ARM64 (.deb).
+            </p>
+          </details>
+
+          <details class="glass-card rounded-2xl p-6 group cursor-pointer transition-all border border-white/5 open:border-emerald-500/30">
+            <summary class="font-display font-bold text-lg text-white flex justify-between items-center select-none">
+              Ist der ITS Launcher kostenlos?
+              <span class="transition-transform group-open:rotate-180 text-emerald-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+              Ja, der ITS Launcher ist vollständig Open Source und kostenlos verfügbar. Du kannst ihn dir jederzeit direkt über GitHub herunterladen.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 py-12 bg-[#05080e]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-slate-500 text-xs">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="Logo" class="w-7 h-7 rounded-lg object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/3b82f6?text=ITS'">
+        <span class="font-bold text-slate-300">ITS Launcher © 2026</span>
+      </div>
+      <p class="text-center sm:text-right">
+        Ein unabhängiges Minecraft-Tool. Nicht mit Mojang oder Microsoft verbunden.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
